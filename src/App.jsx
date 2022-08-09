@@ -4,11 +4,14 @@ import FotoPerfil from './components/FotoPerfil'
 import Form from './components/Form'
 import ChoosePokemon from './components/ChoosePokemon'
 import Spinner from './components/Spinner'
+import Perfil from './components/Perfil'
 
 function App() {
 
+  const [image, setImage] = useState(null);
   const [isValidForm, setIsValidForm] = useState(false)
   const [cargando,setCargando] = useState(false)
+  const [perfil, setPerfil] = useState({})
 
 
   return (
@@ -23,7 +26,10 @@ function App() {
                 <>
                   {cargando ? <Spinner /> :
                     <>
-                      <FotoPerfil />
+                      <Perfil 
+                        perfil={perfil}
+                        image={image}
+                      />
                       <ChoosePokemon /> 
                     </>
                   }
@@ -31,13 +37,15 @@ function App() {
               ) : (
                 <>
                   <FotoPerfil 
-          
+                    image={image}
+                    setImage={setImage}
                   />
                   <Form 
                     isValidForm={isValidForm}
                     setIsValidForm={setIsValidForm}
                     cargando={cargando}
                     setCargando={setCargando}
+                    setPerfil={setPerfil}
                   />
                 </>
               )}

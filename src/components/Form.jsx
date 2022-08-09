@@ -3,7 +3,7 @@
 import {useState, useEffect} from 'react'
 import Mensaje from './Mensaje'
 
-const Form = ({isValidForm, setIsValidForm, cargando, setCargando}) => {
+const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil}) => {
 
   const [nombre, setNombre] = useState('');
   const [pasatiempo, setPasatiempo] = useState('');
@@ -27,7 +27,7 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando}) => {
       } else {
       
         setIsValidForm(true)
-        
+        setPerfil({nombre, pasatiempo, edad, documento})
       }
 
       setCargando(true)
@@ -35,16 +35,9 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando}) => {
         setTimeout(() => {
       setCargando(false)
         }, 3000);
-      
-      //Objeto que almacena datos de paciente 
 
       
       //Reiniciar el FORM
-
-      setNombre('')
-      setPasatiempo('')
-      setEdad('')
-      setDocumento('')
       
   }
 
@@ -70,7 +63,7 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando}) => {
                   id="nombre"
                   type="text"
                   placeholder="Nombre Completo del Trainer" 
-                  className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-md"
+                  className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-xl"
                   value={nombre}
                   onChange={ (e) => setNombre(e.target.value) }
               />
@@ -84,31 +77,31 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando}) => {
                     id="pasatiempo"
                     value={pasatiempo}
                     onChange= {e => setPasatiempo(e.target.value)}
-                    className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-md text-blue "
+                    className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-xl text-blue "
                 >
                     <option value="">Seleccione Pasatiempo</option>
-                    <option value="futbol">Jugar Fútbol</option>
-                    <option value="basketball">Jugar Basquetball</option>
-                    <option value="tennis">Jugar Tennis</option>
-                    <option value="volleyball">Jugar Volleyball</option>
-                    <option value="natacion">Natación</option>
-                    <option value="gimnasio">Gimnasio</option>
-                    <option value="fifa">Jugar FIFA</option>
-                    <option value="videojuegos">Jugar Videojuegos</option>
-                    <option value="series">Ver series</option>
+                    <option value="Fútbol">Jugar Fútbol</option>
+                    <option value="Basketball">Jugar Basquetball</option>
+                    <option value="Tennis">Jugar Tennis</option>
+                    <option value="Volleyball">Jugar Volleyball</option>
+                    <option value="Natación">Natación</option>
+                    <option value="Gimnasio">Gimnasio</option>
+                    <option value="FIFA">Jugar FIFA</option>
+                    <option value="Videojuegos">Jugar Videojuegos</option>
+                    <option value="Series">Ver series</option>
                 </select>
             </div>
 
             <div className="mb-5">
               <label htmlFor='edad' className="block text-gray uppercase font-bold">
-                Cumpleaños*
+                Cumpleaños* MAYOR 18 AÑOS
                 </label>
               <input 
                   id="edad"
                   type="date"
-                  onFocus={e=> e.type='date'}
+                  max='2004-08-09'
                   placeholder="Cumpleaños*" 
-                  className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-md"
+                  className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-xl"
                   value={edad}
                   onChange={ (e) => setEdad(e.target.value) }
               />
@@ -122,7 +115,7 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando}) => {
                   id="documento"
                   type="text"
                   placeholder="Documento Único de Identidad"
-                  className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-md"
+                  className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-xl"
                   value={documento}
                   onChange={ (e) => setDocumento(e.target.value) }
                   pattern="[0-9]{9}" 

@@ -2,9 +2,8 @@ import { useState } from "react"
 import Mensaje from "./Mensaje";
 
 
-const FotoPerfil = () => {
+const FotoPerfil = ({image,setImage}) => {
 
-  const [image, setImage] = useState(null);
   const [mensaje, setMensaje] = useState('')
 
   const handleImage = (e) => {
