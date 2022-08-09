@@ -27,7 +27,7 @@ const FotoPerfil = () => {
 
   return (
     <div className='md:w-1/2 lg:w-1/2 md:h-screen my-20'>
-        <div>
+        <div className="mx-10">
           <p className='text-blue text-4xl'><span className='font-bold'>¡Hola!</span> Configuremos tu perfil</p>
           <p className="m-3">Queremos conocerte mejor</p>
         </div>

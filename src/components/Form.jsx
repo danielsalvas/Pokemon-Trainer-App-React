@@ -3,7 +3,7 @@
 import {useState, useEffect} from 'react'
 import Mensaje from './Mensaje'
 
-const Form = ({isValidForm, setIsValidForm}) => {
+const Form = ({isValidForm, setIsValidForm, cargando, setCargando}) => {
 
   const [nombre, setNombre] = useState('');
   const [pasatiempo, setPasatiempo] = useState('');
@@ -25,10 +25,16 @@ const Form = ({isValidForm, setIsValidForm}) => {
           }, 4000);
           return
       } else {
-
+      
         setIsValidForm(true)
         
       }
+
+      setCargando(true)
+
+        setTimeout(() => {
+      setCargando(false)
+        }, 3000);
       
       //Objeto que almacena datos de paciente 
 
@@ -39,6 +45,7 @@ const Form = ({isValidForm, setIsValidForm}) => {
       setPasatiempo('')
       setEdad('')
       setDocumento('')
+      
   }
 
   return (
@@ -125,6 +132,7 @@ const Form = ({isValidForm, setIsValidForm}) => {
             </div>
 
             <input 
+                value='ENVIAR PERFIL'
                 type="submit" 
                 className='bg-indigo-600 w-1/2 p-3 text-white uppercase font-bold hover:bg-indigo-800 cursor-pointer transition-all'
             />
