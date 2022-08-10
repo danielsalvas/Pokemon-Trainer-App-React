@@ -22,18 +22,18 @@ const Perfil = ({perfil, image}) => {
 
 
         <div className='flex justify-center text-center'>
-            <div className='bg-orange w-96 h-[32rem] flex-col rounded-3xl my-10'>
+            <div className='bg-orange w-96 h-[32rem] flex-col rounded-xl my-14'>
 
-                <div className="my-10">
+                <div className="my-7">
                     <h1 className="font-bold text-3xl">{nombre}</h1>
                 </div>
 
-                <div className='w-64 h-64 bg-gray-200 rounded-full mx-auto  border-white border-8'
+                <div className='w-64 h-64 bg-gray-200 rounded-full mx-auto border-white border-8'
                 style={{background: image ? `url('${image}') no-repeat center/cover` : ''}}
                 >
                 </div>
 
-                <div className='my-8 font-bold text-blue text-xl'>
+                <div className='my-7 font-bold text-blue text-xl'>
                     <div className="flex justify-between mx-12">
                         <p>Pasatiempo: </p> <p className='text-black font-thin'> {pasatiempo} </p> 
                     </div>

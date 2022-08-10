@@ -12,7 +12,7 @@ function App() {
   const [isValidForm, setIsValidForm] = useState(false)
   const [cargando,setCargando] = useState(false)
   const [perfil, setPerfil] = useState({})
-
+  const [guardarPokemons, setGuardarPokemons] = useState([])
 
   return (
     <div className=''>
@@ -30,7 +30,10 @@ function App() {
                         perfil={perfil}
                         image={image}
                       />
-                      <ChoosePokemon /> 
+                      <ChoosePokemon
+                        setGuardarPokemons={setGuardarPokemons}
+                        guardarPokemons={guardarPokemons}
+                      /> 
                     </>
                   }
                 </>    
