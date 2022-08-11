@@ -1,6 +1,5 @@
 
 
-
 const Perfil = ({perfil, image}) => {
 
     const {nombre, pasatiempo, edad, documento} = perfil;

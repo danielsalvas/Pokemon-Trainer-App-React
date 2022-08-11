@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import Pokemon from "./Pokemon";
 import { generarId } from "../helpers";
+import Mensaje from "./Mensaje"; 
+import Spinner from "./Spinner";
+import PerfilFinalizado from "./PerfilFinalizado";
 
-const ChoosePokemon = ({guardarPokemons, setGuardarPokemons}) => {
+const ChoosePokemon = ({guardarPokemons, setGuardarPokemons, setCargando}) => {
 
   const[pokemons, setPokemons] = useState([])
-  const[pokemonSeleccionado, setPokemonSeleccionado] =  useState(false)
+  const[mensaje, setMensaje] = useState('')
+  const[isValidPokemons, setIsValidPokemons] = useState(false)
+  const[cargandoPerfil, setCargandoPerfil] = useState(false)
     
   useEffect(() => {
     
@@ -25,9 +30,10 @@ const ChoosePokemon = ({guardarPokemons, setGuardarPokemons}) => {
     getPokemon();
     setPokemons([])
   }, [])
+
   
   const agregarPokemon = (id) => {
-    setPokemonSeleccionado(true)
+
     const equipoPokemon = pokemons.filter( (pokemon) => pokemon.id === id)
 
     setGuardarPokemons(current => [...current, equipoPokemon])
@@ -37,33 +43,77 @@ const ChoosePokemon = ({guardarPokemons, setGuardarPokemons}) => {
     }
   }
 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (guardarPokemons.length === 3) {
+      setIsValidPokemons(true)
+    } else {
+      setMensaje('Debe escoger 3 Pokemon')
+
+      setTimeout(() => {
+        setMensaje('')
+      }, 3000);
+    }
+
+    setCargandoPerfil(true)
+
+    setTimeout(() => {
+      setCargandoPerfil(false)
+    }, 3000);
+
+  }
+
   return (
     <>
-      <div className="md:w-2/5 lg:w-2/5 mx-5 my-16">
+
+      {isValidPokemons ? (
+          <> 
+            {cargandoPerfil ? <Spinner />
+              :
+             <>
+               <PerfilFinalizado />
+               <p>Hola Mundo</p>
+             </>
+            }
+          </>
+        ) : (
+        <div className="md:w-2/5 lg:w-2/5 mx-5 my-16">
           <h2 className="text-3xl text-blue">POKÉMON</h2>
           <p className="text-lg mt-5 ">Selecciona 3 Pokémon 
           <span className='text-blue font-bold'> para que sean parte de tu equipo.</span>
           </p>
 
-          <div className="grid md:grid-cols-3 gap-4 my-8">
-               {pokemons.map( pokemon => (
-                <>
-                  <Pokemon
-                    key={pokemon.key}
-                    id={pokemon.id}
-                    image={pokemon.sprites.other.dream_world.front_default}
-                    name={pokemon.name}
-                    agregarPokemon={agregarPokemon}
-                  />
-                </> 
-              ))} 
-          </div>
-        
-        <div className="mx-auto text-center">
-          <button className="bg-gray-300 p-4 rounded-3xl text-gray-600 font-bold hover:bg-blue hover:text-white">Guardar</button>
-        </div>
-
+          {mensaje && <Mensaje> {mensaje} </Mensaje>}
+          
+          <form onSubmit={handleSubmit}>
+            <div className="grid md:grid-cols-3 gap-4 my-8">
+                {pokemons.map( pokemon => (
+                  <>
+                      <Pokemon
+                        key={pokemon.key}
+                        id={pokemon.id}
+                        image={pokemon.sprites.other.dream_world.front_default}
+                        name={pokemon.name}
+                        agregarPokemon={agregarPokemon}
+                      />     
+                  </> 
+                ))} 
+            </div>
+          
+            <div className="text-center">
+              <input 
+                value='ESCOGER EQUIPO POKEMON'
+                type="submit" 
+                className='bg-indigo-800 w-1/2 p-3 text-white uppercase font-bold hover:bg-blue cursor-pointer transition-all rounded-3xl'
+              />
+            </div>
+          </form>
       </div>
+        )   
+      }
+      
       
     </>
   )

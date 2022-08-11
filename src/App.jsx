@@ -13,6 +13,7 @@ function App() {
   const [cargando,setCargando] = useState(false)
   const [perfil, setPerfil] = useState({})
   const [guardarPokemons, setGuardarPokemons] = useState([])
+  
 
   return (
     <div className=''>
@@ -20,8 +21,7 @@ function App() {
         <div className="font-Poppins bg-gray-100">
           
           <div className="md:flex">
-              
-              
+                  
               {isValidForm ? (
                 <>
                   {cargando ? <Spinner /> :
@@ -33,6 +33,7 @@ function App() {
                       <ChoosePokemon
                         setGuardarPokemons={setGuardarPokemons}
                         guardarPokemons={guardarPokemons}
+                        setCargando={setCargando}
                       /> 
                     </>
                   }

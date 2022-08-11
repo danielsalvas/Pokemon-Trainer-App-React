@@ -33,10 +33,9 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil}) =
       setCargando(true)
 
         setTimeout(() => {
-      setCargando(false)
+          setCargando(false)
         }, 3000);
-
-      
+ 
       //Reiniciar el FORM
       
   }
@@ -127,7 +126,7 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil}) =
             <input 
                 value='ENVIAR PERFIL'
                 type="submit" 
-                className='bg-indigo-600 w-1/2 p-3 text-white uppercase font-bold hover:bg-indigo-800 cursor-pointer transition-all'
+                className='rounded-3xl bg-indigo-600 w-1/2 p-3 text-white uppercase font-bold hover:bg-indigo-800 cursor-pointer transition-all'
             />
         </form>
     </div>
