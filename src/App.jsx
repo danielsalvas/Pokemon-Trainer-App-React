@@ -13,6 +13,8 @@ function App() {
   const [cargando,setCargando] = useState(false)
   const [perfil, setPerfil] = useState({})
   const [guardarPokemons, setGuardarPokemons] = useState([])
+  const [isValidPokemons, setIsValidPokemons] = useState(false)
+  const [cargandoPerfil, setCargandoPerfil] = useState(false)
   
 
   return (
@@ -29,11 +31,16 @@ function App() {
                       <Perfil 
                         perfil={perfil}
                         image={image}
+                        isValidPokemons={isValidPokemons}
+                        cargandoPerfil={cargandoPerfil}
                       />
                       <ChoosePokemon
                         setGuardarPokemons={setGuardarPokemons}
                         guardarPokemons={guardarPokemons}
-                        setCargando={setCargando}
+                        setIsValidPokemons={setIsValidPokemons}
+                        isValidPokemons={isValidPokemons}
+                        setCargandoPerfil={setCargandoPerfil}
+                        cargandoPerfil={cargandoPerfil}
                       /> 
                     </>
                   }

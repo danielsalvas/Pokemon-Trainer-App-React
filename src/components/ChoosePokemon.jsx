@@ -3,15 +3,22 @@ import Pokemon from "./Pokemon";
 import { generarId } from "../helpers";
 import Mensaje from "./Mensaje"; 
 import Spinner from "./Spinner";
-import PerfilFinalizado from "./PerfilFinalizado";
+import EquipoPokemon from "./EquipoPokemon";
 
-const ChoosePokemon = ({guardarPokemons, setGuardarPokemons, setCargando}) => {
+const ChoosePokemon = ({
+  guardarPokemons, 
+  setGuardarPokemons, 
+  isValidPokemons,
+  setIsValidPokemons,
+  cargandoPerfil,
+  setCargandoPerfil
+}) => {
 
-  const[pokemons, setPokemons] = useState([])
-  const[mensaje, setMensaje] = useState('')
-  const[isValidPokemons, setIsValidPokemons] = useState(false)
-  const[cargandoPerfil, setCargandoPerfil] = useState(false)
-    
+  const [pokemons, setPokemons] = useState([])
+  const [mensaje, setMensaje] = useState('')
+  const [selectedIndex, setSelectedIndex] = useState()
+  const [pokemonsSeleccionados, setPokemonsSeleccionados] =  useState([])
+
   useEffect(() => {
     
     const getPokemon = async () => {
@@ -36,13 +43,15 @@ const ChoosePokemon = ({guardarPokemons, setGuardarPokemons, setCargando}) => {
 
     const equipoPokemon = pokemons.filter( (pokemon) => pokemon.id === id)
 
+    setSelectedIndex(id - 1)
+    
     setGuardarPokemons(current => [...current, equipoPokemon])
 
     if (guardarPokemons.length >= 3) {
       guardarPokemons.splice(2,3)
     }
+    console.log(selectedIndex);
   }
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -73,8 +82,7 @@ const ChoosePokemon = ({guardarPokemons, setGuardarPokemons, setCargando}) => {
             {cargandoPerfil ? <Spinner />
               :
              <>
-               <PerfilFinalizado />
-               <p>Hola Mundo</p>
+               <EquipoPokemon />
              </>
             }
           </>
@@ -89,15 +97,16 @@ const ChoosePokemon = ({guardarPokemons, setGuardarPokemons, setCargando}) => {
           
           <form onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-3 gap-4 my-8">
-                {pokemons.map( pokemon => (
+                {pokemons.map( (pokemon, i) => (
                   <>
-                      <Pokemon
-                        key={pokemon.key}
-                        id={pokemon.id}
-                        image={pokemon.sprites.other.dream_world.front_default}
-                        name={pokemon.name}
-                        agregarPokemon={agregarPokemon}
-                      />     
+                        <Pokemon
+                          key={pokemon.key}
+                          id={pokemon.id}
+                          image={pokemon.sprites.other.dream_world.front_default}
+                          name={pokemon.name}
+                          agregarPokemon={agregarPokemon}
+                          clase={i===selectedIndex ? 'bg-orange' : 'bg-gray-200'}
+                        />     
                   </> 
                 ))} 
             </div>
