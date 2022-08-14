@@ -3,7 +3,7 @@
 import {useState, useEffect} from 'react'
 import Mensaje from './Mensaje'
 
-const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil}) => {
+const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil, image}) => {
 
   const [nombre, setNombre] = useState('');
   const [pasatiempo, setPasatiempo] = useState('');
@@ -17,7 +17,7 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil}) =
 
       //Validación de formulario
 
-      if ([nombre, edad, documento].includes('')) {
+      if ([nombre, edad, documento].includes('') || image===null) {
           setMensaje('Los campos con * son obligatorios')
 
           setTimeout(() => {
@@ -41,18 +41,19 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil}) =
   }
 
   return (
-    <div className="md:w-1/2 lg:w-1/2 mx-5 my-auto">
-        <h2 className="text-3xl text-blue">Tu información</h2>
-        <p className="text-lg mt-5 ">Completa la siguiente información
-        <span className='text-blue font-bold'> para completar tu perfil.</span>
-        </p>
+    <div className="md:w-1/2 lg:w-1/2 mx-5 sm:my-32">
+        {/* Agrega mensaje de error si todos los campos están vacíos */}
+        {mensaje && <Mensaje> {mensaje} </Mensaje>}
+        <div className='md:text-left text-center'>
+          <h2 className="text-3xl text-blue">Tu información</h2>
+          <p className="text-lg mt-5 ">Completa la siguiente información
+          <span className='text-blue font-bold'> para completar tu perfil.</span>
+          </p>
+        </div>
 
         <form 
             onSubmit={handleSubmit}
             className=' rounded-lg py-10 px-5 mb-16 mx-auto'>
-            
-            {/* Agrega mensaje de error si todos los campos están vacíos */}
-            {mensaje && <Mensaje> {mensaje} </Mensaje>}
 
             <div className="mb-5">
               <label htmlFor='nombre' className="block text-gray uppercase font-bold">
@@ -62,7 +63,7 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil}) =
                   id="nombre"
                   type="text"
                   placeholder="Nombre Completo del Trainer" 
-                  className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-xl"
+                  className="border-2 lg:w-3/4 w-full p-2 mt-2 placeholder-gray-400 rounded-xl"
                   value={nombre}
                   onChange={ (e) => setNombre(e.target.value) }
               />
@@ -76,7 +77,7 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil}) =
                     id="pasatiempo"
                     value={pasatiempo}
                     onChange= {e => setPasatiempo(e.target.value)}
-                    className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-xl text-blue "
+                    className="border-2 lg:w-3/4 w-full p-2 mt-2 placeholder-gray-400 rounded-xl text-blue "
                 >
                     <option value="">Seleccione Pasatiempo</option>
                     <option value="Fútbol">Jugar Fútbol</option>
@@ -100,7 +101,7 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil}) =
                   type="date"
                   max='2004-08-09'
                   placeholder="Cumpleaños*" 
-                  className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-xl"
+                  className="border-2 lg:w-3/4 w-full p-2 mt-2 placeholder-gray-400 rounded-xl"
                   value={edad}
                   onChange={ (e) => setEdad(e.target.value) }
               />
@@ -114,7 +115,7 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil}) =
                   id="documento"
                   type="text"
                   placeholder="Documento Único de Identidad"
-                  className="border-2 w-1/2 p-2 mt-2 placeholder-gray-400 rounded-xl"
+                  className="border-2 lg:w-3/4 w-full p-2 mt-2 placeholder-gray-400 rounded-xl"
                   value={documento}
                   onChange={ (e) => setDocumento(e.target.value) }
                   pattern="[0-9]{9}" 

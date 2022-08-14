@@ -20,7 +20,7 @@ function App() {
   return (
     <div className=''>
       <Header />
-        <div className="font-Poppins bg-gray-100">
+        <div className="font-Poppins bg-gray-100 p-1">
           
           <div className="md:flex">
                   
@@ -57,6 +57,7 @@ function App() {
                     cargando={cargando}
                     setCargando={setCargando}
                     setPerfil={setPerfil}
+                    image={image}
                   />
                 </>
               )}

@@ -31,12 +31,15 @@ const ChoosePokemon = ({
           const data =  await res.json()
           data.key = generarId()
           setPokemons( currentList => [...currentList, data])
+          pokemons.sort(function(a, b) {return a.id - b.id})
       })
     }; 
-    console.log(pokemons);
+    
     getPokemon();
     setPokemons([])
   }, [])
+
+  console.log(pokemons);
 
   
   const agregarPokemon = (id) => {
@@ -50,7 +53,6 @@ const ChoosePokemon = ({
     if (guardarPokemons.length >= 3) {
       guardarPokemons.splice(2,3)
     }
-    console.log(selectedIndex);
   }
 
   const handleSubmit = (e) => {
@@ -71,8 +73,9 @@ const ChoosePokemon = ({
     setTimeout(() => {
       setCargandoPerfil(false)
     }, 3000);
-
   }
+
+  console.log(guardarPokemons);
 
   return (
     <>
@@ -82,7 +85,9 @@ const ChoosePokemon = ({
             {cargandoPerfil ? <Spinner />
               :
              <>
-               <EquipoPokemon />
+               <EquipoPokemon 
+                  guardarPokemons={guardarPokemons}
+               />
              </>
             }
           </>
@@ -96,13 +101,13 @@ const ChoosePokemon = ({
           {mensaje && <Mensaje> {mensaje} </Mensaje>}
           
           <form onSubmit={handleSubmit}>
-            <div className="grid md:grid-cols-3 gap-4 my-8">
+            <div className="grid md:grid-cols-3 gap-4 my-3">
                 {pokemons.map( (pokemon, i) => (
                   <>
                         <Pokemon
                           key={pokemon.key}
                           id={pokemon.id}
-                          image={pokemon.sprites.other.dream_world.front_default}
+                          image={pokemon.sprites.other.home.front_default}
                           name={pokemon.name}
                           agregarPokemon={agregarPokemon}
                           clase={i===selectedIndex ? 'bg-orange' : 'bg-gray-200'}

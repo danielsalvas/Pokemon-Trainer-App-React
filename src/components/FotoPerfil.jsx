@@ -25,8 +25,8 @@ const FotoPerfil = ({image,setImage}) => {
   }
 
   return (
-    <div className='md:w-1/2 lg:w-1/2 md:h-screen my-20'>
-        <div className="mx-10">
+    <div className='md:w-1/2 my-20'>
+        <div className="mx-10 md:text-left text-center">
           <p className='text-blue text-4xl'><span className='font-bold'>¡Hola!</span> Configuremos tu perfil</p>
           <p className="m-3">Queremos conocerte mejor</p>
         </div>
@@ -39,7 +39,7 @@ const FotoPerfil = ({image,setImage}) => {
             <div className='bg-orange w-96 h-[32rem] flex-col rounded-3xl my-10'>
 
                 <div className="my-10">
-                    <h1 className="font-bold text-3xl">Imágen de Perfil</h1>
+                    <h1 className="font-bold text-3xl">Imágen de Perfil*</h1>
                 </div>
 
                 <div className='w-64 h-64 bg-gray-200 rounded-full mx-auto  border-white border-8'
