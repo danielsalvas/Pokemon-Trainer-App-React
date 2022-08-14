@@ -3,7 +3,7 @@ import { useState } from "react"
 const Pokemon = ({id, image, name, agregarPokemon, clase}) => {
 
   return (
-    <div onClick={ () => agregarPokemon(id) } className={`${clase} cursor-pointer p-3 rounded-3xl w-auto`}>
+    <div onClick={ () => agregarPokemon(id) } className={`${clase} cursor-pointer p-3 rounded-3xl sm:w-auto w-1/2 mx-auto`}>
           <div>
               <img src={image} alt={name} className='mx-auto h-36'/>
           </div>

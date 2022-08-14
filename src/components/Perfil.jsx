@@ -30,8 +30,8 @@ const Perfil = ({perfil, image, isValidPokemons, cargandoPerfil}) => {
             }
           </>
         ) : (
-          <div className='md:w-1/2 lg:w-1/2 md:h-screen my-20'>
-            <div className="mx-10">
+          <div className='md:w-1/2 lg:w-1/2 my-20'>
+            <div className="mx-10 md:text-left text-center">
               <p className='text-blue text-4xl font-bold'>¡Ya casi terminamos!</p>
               <p className="m-3">Revisa tu información, podrás editarla más adelante.</p>
             </div>

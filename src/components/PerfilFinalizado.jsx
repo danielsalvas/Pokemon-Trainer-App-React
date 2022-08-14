@@ -11,7 +11,7 @@ const primerNombre = (nombre) => {
 
 const PerfilFinalizado = ({perfil, image, nuevaEdad}) => {
   return (
-    <div className='md:w-1/2 lg:w-1/2 md:h-screen my-20'>
+    <div className='md:w-2/5 lg:w-2/5 md:h-screen my-20'>
             <div className="mx-10">
               <p className='text-blue text-4xl font-bold'>¡Hola! {primerNombre(perfil.nombre)}</p>
               <p className="m-3">Te damos la bienvenida a tu perfil entrenador</p>

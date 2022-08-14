@@ -18,11 +18,14 @@ function App() {
   
 
   return (
-    <div className=''>
-      <Header />
-        <div className="font-Poppins bg-gray-100 p-1">
+    <div>
+      <div className='flex md:justify-start justify-center'>
+        <Header />
+      </div>
+        
+        <div className="font-Poppins">
           
-          <div className="md:flex">
+          <div className="md:flex bg-gray-100 p-1">
                   
               {isValidForm ? (
                 <>

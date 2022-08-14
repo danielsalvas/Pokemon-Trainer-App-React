@@ -25,18 +25,18 @@ const PokemonElegido = ({
     ]
 
   return (
-    <div className='bg-gray-200 p-1 rounded-3xl flex'>
-        <div className='w-1/4 m-5 text-center'>
+    <div className='bg-gray-200 p-1 rounded-3xl md:flex my-5'>
+        <div className='md:w-1/4 m-5 text-center'>
             <div>
                 <img src={image} alt={name} className='h-36 mx-auto'/>
             </div>
             <div className='my-3 text-black'>
-                    <p className='font-bold text-2xl'> {name.toUpperCase()} </p> 
-                    <p className='text-lg'>{types.toUpperCase()}</p>
+                    <p className='font-bold lg:text-2xl text-lg'> {name.toUpperCase()} </p> 
+                    <p className='lg:text-lg text-base'>{types.toUpperCase()}</p>
             </div>
         </div>
 
-        <div className="w-3/4 grid grid-cols-1 gap-4 my-8 ">
+        <div className="md:w-3/4 grid grid-cols-1 gap-4 my-8 ">
         {skills.map( (skill) => (
               <>
                 <Skill

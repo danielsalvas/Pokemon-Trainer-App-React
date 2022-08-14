@@ -93,15 +93,17 @@ const ChoosePokemon = ({
           </>
         ) : (
         <div className="md:w-2/5 lg:w-2/5 mx-5 my-16">
-          <h2 className="text-3xl text-blue">POKÉMON</h2>
-          <p className="text-lg mt-5 ">Selecciona 3 Pokémon 
-          <span className='text-blue font-bold'> para que sean parte de tu equipo.</span>
-          </p>
+          <div className="md:text-left text-center">
+            <h2 className="text-3xl text-blue">POKÉMON</h2>
+            <p className="text-lg mt-5 ">Selecciona 3 Pokémon 
+            <span className='text-blue font-bold'> para que sean parte de tu equipo.</span>
+            </p>
+          </div>
 
           {mensaje && <Mensaje> {mensaje} </Mensaje>}
           
           <form onSubmit={handleSubmit}>
-            <div className="grid md:grid-cols-3 gap-4 my-3">
+            <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 my-3 md:h-screen md:overflow-y-scroll">
                 {pokemons.map( (pokemon, i) => (
                   <>
                         <Pokemon
@@ -120,7 +122,7 @@ const ChoosePokemon = ({
               <input 
                 value='ESCOGER EQUIPO POKEMON'
                 type="submit" 
-                className='bg-indigo-800 w-1/2 p-3 text-white uppercase font-bold hover:bg-blue cursor-pointer transition-all rounded-3xl'
+                className='bg-indigo-800 w-1/2 p-3 text-white uppercase font-bold hover:bg-blue cursor-pointer transition-all rounded-3xl text-xs'
               />
             </div>
           </form>
