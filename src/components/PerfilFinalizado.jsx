@@ -2,16 +2,19 @@ import React from 'react'
 import medalla from '../img/medalla.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+const PerfilFinalizado = ({perfil, image, nuevaEdad, editarPerfil, setEditarPerfil}) => {
 
 const primerNombre = (nombre) => {
     
     let result = nombre.split(' ')
     let final = result[0]
-    console.log(final);
     return final
 }
 
-const PerfilFinalizado = ({perfil, image, nuevaEdad}) => {
+const handleEditar = () => {
+    setEditarPerfil(perfil)
+}
+
   return (
     <div className='md:w-2/5 lg:w-2/5 md:h-screen my-20'>
             <div className='md:flex md:text-left text-center w-11/12'>
@@ -21,7 +24,7 @@ const PerfilFinalizado = ({perfil, image, nuevaEdad}) => {
                 </div>
 
                 <div>
-                    <button className=" bg-white my-2 px-1 rounded-lg border-blue border-2 text-blue hover:bg-blue hover:text-white text-sm w-28 h-8"><FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
+                    <button onClick={handleEditar} className=" bg-white my-2 px-1 rounded-lg border-blue border-2 text-blue hover:bg-blue hover:text-white text-sm w-28 h-8"><FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
                         <span className="mx-5">Editar</span>
                     </button>
                 </div>

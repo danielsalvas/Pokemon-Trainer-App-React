@@ -17,7 +17,7 @@ import { useState } from "react"
         <div>
           <h2 className="text-3xl text-blue">MIS POKÉMON</h2>
           <p className="text-lg mt-5 ">Aquí se muestran 
-          <span className='text-blue font-bold'>las skill de tus nuevos compañeros</span>
+          <span className='text-blue font-bold'> las skill de tus nuevos compañeros</span>
           </p>
         </div>
 

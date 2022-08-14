@@ -1,6 +1,10 @@
 import PerfilFinalizado from "./PerfilFinalizado"
 
-const Perfil = ({perfil, image, isValidPokemons, cargandoPerfil}) => {
+const Perfil = ({
+  perfil, image, 
+  isValidPokemons, cargandoPerfil,
+  editarPerfil, setEditarPerfil
+}) => {
 
     const {nombre, pasatiempo, edad, documento} = perfil;
 
@@ -25,6 +29,8 @@ const Perfil = ({perfil, image, isValidPokemons, cargandoPerfil}) => {
                   perfil={perfil}
                   image={image}
                   nuevaEdad={nuevaEdad}
+                  editarPerfil={editarPerfil}
+                  setEditarPerfil={setEditarPerfil}
                />
              </>
             }

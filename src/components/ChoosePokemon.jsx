@@ -39,9 +39,6 @@ const ChoosePokemon = ({
     setPokemons([])
   }, [])
 
-  console.log(pokemons);
-
-  
   const agregarPokemon = (id) => {
 
     const equipoPokemon = pokemons.filter( (pokemon) => pokemon.id === id)
@@ -74,8 +71,6 @@ const ChoosePokemon = ({
       setCargandoPerfil(false)
     }, 3000);
   }
-
-  console.log(guardarPokemons);
 
   return (
     <>

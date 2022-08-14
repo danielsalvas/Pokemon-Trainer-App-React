@@ -25,8 +25,8 @@ const PokemonElegido = ({
     ]
 
   return (
-    <div className='bg-gray-200 p-1 rounded-3xl md:flex my-5'>
-        <div className='md:w-1/4 m-5 text-center'>
+    <div className='bg-gray-200 p-1 rounded-3xl lg:flex my-5'>
+        <div className='lg:w-1/4 m-5 text-center'>
             <div>
                 <img src={image} alt={name} className='h-36 mx-auto'/>
             </div>
@@ -36,7 +36,7 @@ const PokemonElegido = ({
             </div>
         </div>
 
-        <div className="md:w-3/4 grid grid-cols-1 gap-4 my-8 ">
+        <div className="lg:w-3/4 grid grid-cols-1 gap-4 my-8 ">
         {skills.map( (skill) => (
               <>
                 <Skill

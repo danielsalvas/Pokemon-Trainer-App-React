@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import FotoPerfil from './components/FotoPerfil'
 import Form from './components/Form'
@@ -15,6 +15,14 @@ function App() {
   const [guardarPokemons, setGuardarPokemons] = useState([])
   const [isValidPokemons, setIsValidPokemons] = useState(false)
   const [cargandoPerfil, setCargandoPerfil] = useState(false)
+  const [editarPerfil, setEditarPerfil] = useState({})
+
+  useEffect(() => {
+    if (Object.keys(editarPerfil).length > 0) {
+      setIsValidForm(false)
+    }
+  }, [editarPerfil])
+  
   
   return (
     <div>
@@ -35,6 +43,8 @@ function App() {
                         image={image}
                         isValidPokemons={isValidPokemons}
                         cargandoPerfil={cargandoPerfil}
+                        editarPerfil={editarPerfil}
+                        setEditarPerfil={setEditarPerfil}
                       />
                       <ChoosePokemon
                         setGuardarPokemons={setGuardarPokemons}
@@ -52,6 +62,7 @@ function App() {
                   <FotoPerfil 
                     image={image}
                     setImage={setImage}
+                    editarPerfil={editarPerfil}
                   />
                   <Form 
                     isValidForm={isValidForm}
@@ -60,6 +71,7 @@ function App() {
                     setCargando={setCargando}
                     setPerfil={setPerfil}
                     image={image}
+                    editarPerfil={editarPerfil}
                   />
                 </>
               )}

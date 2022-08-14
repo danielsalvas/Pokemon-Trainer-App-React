@@ -2,7 +2,7 @@ import { useState } from "react"
 import Mensaje from "./Mensaje";
 
 
-const FotoPerfil = ({image,setImage}) => {
+const FotoPerfil = ({image,setImage, editarPerfil}) => {
 
   const [mensaje, setMensaje] = useState('')
 
@@ -27,7 +27,11 @@ const FotoPerfil = ({image,setImage}) => {
   return (
     <div className='md:w-1/2 my-20'>
         <div className="mx-10 md:text-left text-center">
-          <p className='text-blue text-4xl'><span className='font-bold'>¡Hola!</span> Configuremos tu perfil</p>
+          <p className='text-blue text-4xl font-bold'>
+            { editarPerfil.nombre ? '¡Hola de nuevo! Editemos tu perfil'
+              : '¡Hola! Configuremos tu perfil'
+            }
+          </p>
           <p className="m-3">Queremos conocerte mejor</p>
         </div>
 

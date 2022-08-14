@@ -3,7 +3,12 @@
 import {useState, useEffect} from 'react'
 import Mensaje from './Mensaje'
 
-const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil, image}) => {
+const Form = ({
+  isValidForm, setIsValidForm, 
+  cargando, setCargando, 
+  setPerfil, image, 
+  editarPerfil
+}) => {
 
   const [nombre, setNombre] = useState('');
   const [pasatiempo, setPasatiempo] = useState('');
@@ -11,6 +16,16 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil, im
   const [documento, setDocumento] = useState('');
 
   const [mensaje, setMensaje] = useState('')
+
+  useEffect(() => {
+    if (Object.keys(editarPerfil).length > 0) {
+      setNombre(editarPerfil.nombre)
+      setPasatiempo(editarPerfil.pasatiempo)
+      setEdad(editarPerfil.edad)
+      setDocumento(editarPerfil.documento)
+    }
+  }, [])
+  
 
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -85,10 +100,10 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil, im
                     <option value="Tennis">Jugar Tennis</option>
                     <option value="Volleyball">Jugar Volleyball</option>
                     <option value="Natación">Natación</option>
-                    <option value="Gimnasio">Gimnasio</option>
-                    <option value="FIFA">Jugar FIFA</option>
+                    <option value="Ir al Gimnasio">Gimnasio</option>
+                    <option value="Jugar FIFA">Jugar FIFA</option>
                     <option value="Videojuegos">Jugar Videojuegos</option>
-                    <option value="Series">Ver series</option>
+                    <option value="Ver Series">Ver series</option>
                 </select>
             </div>
 
@@ -125,7 +140,9 @@ const Form = ({isValidForm, setIsValidForm, cargando, setCargando, setPerfil, im
             </div>
 
             <input 
-                value='ENVIAR PERFIL'
+                value={ editarPerfil.nombre ? 'Guardar Cambios'
+                : 'Enviar Perfil'
+                }
                 type="submit" 
                 className='rounded-3xl bg-indigo-600 w-1/2 p-3 text-white uppercase font-bold hover:bg-indigo-800 cursor-pointer transition-all'
             />
