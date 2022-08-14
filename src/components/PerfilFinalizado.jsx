@@ -1,5 +1,7 @@
 import React from 'react'
 import medalla from '../img/medalla.png'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 
 const primerNombre = (nombre) => {
     
@@ -12,9 +14,17 @@ const primerNombre = (nombre) => {
 const PerfilFinalizado = ({perfil, image, nuevaEdad}) => {
   return (
     <div className='md:w-2/5 lg:w-2/5 md:h-screen my-20'>
-            <div className="mx-10">
-              <p className='text-blue text-4xl font-bold'>¡Hola! {primerNombre(perfil.nombre)}</p>
-              <p className="m-3">Te damos la bienvenida a tu perfil entrenador</p>
+            <div className='md:flex md:text-left text-center w-11/12'>
+                <div className="mx-10">
+                    <p className='text-blue text-4xl font-bold'>¡Hola! {primerNombre(perfil.nombre)}</p>
+                    <p className="m-3">Te damos la bienvenida a tu perfil entrenador</p>
+                </div>
+
+                <div>
+                    <button className=" bg-white my-2 px-1 rounded-lg border-blue border-2 text-blue hover:bg-blue hover:text-white text-sm w-28 h-8"><FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
+                        <span className="mx-5">Editar</span>
+                    </button>
+                </div>
             </div>
     
             <div className='flex justify-center text-center'>

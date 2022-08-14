@@ -16,7 +16,6 @@ function App() {
   const [isValidPokemons, setIsValidPokemons] = useState(false)
   const [cargandoPerfil, setCargandoPerfil] = useState(false)
   
-
   return (
     <div>
       <div className='flex md:justify-start justify-center'>

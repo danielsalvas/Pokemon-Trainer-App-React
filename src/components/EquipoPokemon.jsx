@@ -1,11 +1,19 @@
 import PokemonElegido from "./PokemonElegido"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import { useState } from "react"
  
- const EquipoPokemon = ({guardarPokemons}) => {
+ const EquipoPokemon = ({guardarPokemons, setGuardarPokemons, setIsValidPokemons}) => {
+
+  const handleEdit = () => {
+    setGuardarPokemons([])
+    setIsValidPokemons(false)
+  }
+
    return (
+
     <div className="md:w-3/5 lg:w-3/5 mx-5 my-16">
-      <div className="flex justify-between w-full">
+      <div className="md:flex md:text-left text-center w-11/12">
         <div>
           <h2 className="text-3xl text-blue">MIS POKÉMON</h2>
           <p className="text-lg mt-5 ">Aquí se muestran 
@@ -14,7 +22,7 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
         </div>
 
         <div>
-          <button className="bg-white px-2 rounded-lg border-blue border-2 text-blue"><FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
+          <button onClick={handleEdit} className="my-2 bg-white px-2 rounded-lg border-blue border-2 text-blue hover:bg-blue hover:text-white"><FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
             <span className="mx-5 ">Editar</span>
           </button>
         </div>

@@ -87,6 +87,8 @@ const ChoosePokemon = ({
              <>
                <EquipoPokemon 
                   guardarPokemons={guardarPokemons}
+                  setGuardarPokemons={setGuardarPokemons}
+                  setIsValidPokemons={setIsValidPokemons}
                />
              </>
             }
