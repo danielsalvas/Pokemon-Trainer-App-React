@@ -21,7 +21,7 @@ const ChoosePokemon = ({
   useEffect(() => {
     
     const getPokemon = async () => {
-      const url = `https://pokeapi.co/api/v2/pokemon?limit=9`;
+      const url = `https://pokeapi.co/api/v2/pokemon?limit=30`;
       const res = await fetch(url);
       const pokemon = await res.json();
 
@@ -105,7 +105,7 @@ const ChoosePokemon = ({
           {mensaje && <Mensaje> {mensaje} </Mensaje>}
           
           <form onSubmit={handleSubmit}>
-            <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 my-3 md:h-screen md:overflow-y-scroll">
+            <div className="grid lg:grid-cols-3 grid-cols-2 gap-4 my-3 md:h-screen md:overflow-y-scroll">
                 {pokemons.map( (pokemon) => (
                   <>
                         <Pokemon
