@@ -123,7 +123,7 @@ const ChoosePokemon = ({
           
             <div className="text-center">
               <input 
-                value={editantoPokemons ?'EDITAR EQUIPO POKEMON': 'ESCOGER EQUIPO POKEMON'}
+                value={editantoPokemons ?'EDITAR EQUIPO': 'ESCOGER EQUIPO'}
                 type="submit" 
                 className='bg-green-800 w-1/2 p-5 text-white uppercase font-bold hover:bg-indigo-800 cursor-pointer transition-all rounded-3xl text-xs'
               />
