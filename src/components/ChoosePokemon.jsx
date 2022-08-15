@@ -14,8 +14,9 @@ const ChoosePokemon = ({
   setCargandoPerfil
 }) => {
 
-  const [pokemons, setPokemons] = useState([])
-  const [mensaje, setMensaje] = useState('')
+  const [pokemons, setPokemons] = useState([]) //Almacena los pokemons de petición a la API
+  const [mensaje, setMensaje] = useState('') //Mensajes de error
+  const [editantoPokemons, setEditandoPokemons] = useState(false) //Ayuda a identificar si se está editando
 
   useEffect(() => {
     
@@ -53,7 +54,6 @@ const ChoosePokemon = ({
     }
   }
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -86,6 +86,7 @@ const ChoosePokemon = ({
                   guardarPokemons={guardarPokemons}
                   setGuardarPokemons={setGuardarPokemons}
                   setIsValidPokemons={setIsValidPokemons}
+                  setEditandoPokemons={setEditandoPokemons}
                />
              </>
             }
@@ -93,7 +94,9 @@ const ChoosePokemon = ({
         ) : (
         <div className="md:w-2/5 lg:w-2/5 mx-5 my-16">
           <div className="md:text-left text-center">
-            <h2 className="text-3xl text-blue">POKÉMON</h2>
+            <h2 className="text-3xl text-blue">{
+              editantoPokemons ? 'ESCOGE NUEVAMENTE TU EQUIPO' : 'POKEMÓN'
+            }</h2>
             <p className="text-lg mt-5 ">Selecciona 3 Pokémon 
             <span className='text-blue font-bold'> para que sean parte de tu equipo.</span>
             </p>
@@ -120,7 +123,7 @@ const ChoosePokemon = ({
           
             <div className="text-center">
               <input 
-                value='ESCOGER EQUIPO POKEMON'
+                value={editantoPokemons ?'EDITAR EQUIPO POKEMON': 'ESCOGER EQUIPO POKEMON'}
                 type="submit" 
                 className='bg-indigo-800 w-1/2 p-3 text-white uppercase font-bold hover:bg-blue cursor-pointer transition-all rounded-3xl text-xs'
               />
@@ -128,9 +131,7 @@ const ChoosePokemon = ({
           </form>
       </div>
         )   
-      }
-      
-      
+      }   
     </>
   )
 } 

@@ -26,7 +26,6 @@ const Form = ({
     }
   }, [])
   
-
   const handleSubmit = (e) => {
       e.preventDefault();
 
@@ -50,9 +49,6 @@ const Form = ({
         setTimeout(() => {
           setCargando(false)
         }, 3000);
- 
-      //Reiniciar el FORM
-      
   }
 
   return (

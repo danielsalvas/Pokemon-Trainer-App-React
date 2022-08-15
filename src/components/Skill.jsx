@@ -1,6 +1,5 @@
 import ProgressBar from "./ProgressBar";
 
-
 const Skill = ({nombre, porcentaje}) => {
   return (
     <div className="flex justify-between lg:w-3/4">

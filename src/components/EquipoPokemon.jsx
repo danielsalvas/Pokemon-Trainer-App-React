@@ -3,7 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
  
- const EquipoPokemon = ({guardarPokemons, setGuardarPokemons, setIsValidPokemons}) => {
+ const EquipoPokemon = ({
+  guardarPokemons, 
+  setGuardarPokemons, 
+  setIsValidPokemons,
+  setEditandoPokemons
+}) => {
 
   const handleEdit = () => {
     guardarPokemons.forEach((pokemon) => {
@@ -11,6 +16,7 @@ import { useState } from "react"
     })
     setIsValidPokemons(false)
     setGuardarPokemons([])
+    setEditandoPokemons(true)
   }
 
    return (
@@ -31,26 +37,25 @@ import { useState } from "react"
         </div>
       </div>
 
-      
-        <div className="lg:w-4/5 w-full gap-4 my-8 md:h-screen md:overflow-y-scroll mx-auto">
-            {guardarPokemons.map( (pokemon) => (
-              <>
-                    <PokemonElegido
-                      key={pokemon[0].key}
-                      id={pokemon[0].id}
-                      image={pokemon[0].sprites.other.home.front_default}
-                      name={pokemon[0].name}
-                      types={pokemon[0].types[0].type.name}
-                      hp={pokemon[0].stats[0].base_stat}
-                      ataque={pokemon[0].stats[1].base_stat}
-                      defensa={pokemon[0].stats[2].base_stat}
-                      ataqueEspecial={pokemon[0].stats[3].base_stat}
-                      defensaEspecial={pokemon[0].stats[4].base_stat}
-                      velocidad={pokemon[0].stats[5].base_stat}
-                    />     
-              </> 
-            ))} 
-        </div>
+      <div className="lg:w-4/5 w-full gap-4 my-8 md:h-screen md:overflow-y-scroll mx-auto">
+        {guardarPokemons.map( (pokemon) => (
+          <>
+                <PokemonElegido
+                  key={pokemon[0].key}
+                  id={pokemon[0].id}
+                  image={pokemon[0].sprites.other.home.front_default}
+                  name={pokemon[0].name}
+                  types={pokemon[0].types[0].type.name}
+                  hp={pokemon[0].stats[0].base_stat}
+                  ataque={pokemon[0].stats[1].base_stat}
+                  defensa={pokemon[0].stats[2].base_stat}
+                  ataqueEspecial={pokemon[0].stats[3].base_stat}
+                  defensaEspecial={pokemon[0].stats[4].base_stat}
+                  velocidad={pokemon[0].stats[5].base_stat}
+                />     
+          </> 
+        ))} 
+      </div>
     </div> 
    )
  }
