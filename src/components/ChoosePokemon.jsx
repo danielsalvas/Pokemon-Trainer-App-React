@@ -16,8 +16,6 @@ const ChoosePokemon = ({
 
   const [pokemons, setPokemons] = useState([])
   const [mensaje, setMensaje] = useState('')
-  const [selectedIndex, setSelectedIndex] = useState()
-  const [pokemonsSeleccionados, setPokemonsSeleccionados] =  useState([])
 
   useEffect(() => {
     
@@ -30,6 +28,7 @@ const ChoosePokemon = ({
           const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
           const data =  await res.json()
           data.key = generarId()
+          data.toggled = false;
           setPokemons( currentList => [...currentList, data])
           pokemons.sort(function(a, b) {return a.id - b.id})
       })
@@ -43,7 +42,9 @@ const ChoosePokemon = ({
 
     const equipoPokemon = pokemons.filter( (pokemon) => pokemon.id === id)
 
-    setSelectedIndex(id - 1)
+    if (equipoPokemon[0].toggled === false) {
+      equipoPokemon[0].toggled = true;
+    }   
     
     setGuardarPokemons(current => [...current, equipoPokemon])
 
@@ -51,6 +52,7 @@ const ChoosePokemon = ({
       guardarPokemons.splice(2,3)
     }
   }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -101,7 +103,7 @@ const ChoosePokemon = ({
           
           <form onSubmit={handleSubmit}>
             <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 my-3 md:h-screen md:overflow-y-scroll">
-                {pokemons.map( (pokemon, i) => (
+                {pokemons.map( (pokemon) => (
                   <>
                         <Pokemon
                           key={pokemon.key}
@@ -109,7 +111,8 @@ const ChoosePokemon = ({
                           image={pokemon.sprites.other.home.front_default}
                           name={pokemon.name}
                           agregarPokemon={agregarPokemon}
-                          clase={i===selectedIndex ? 'bg-orange' : 'bg-gray-200'}
+                          guardarPokemons={guardarPokemons}
+                          clase={pokemon.toggled ? 'bg-orange' : 'bg-gray-200'}
                         />     
                   </> 
                 ))} 

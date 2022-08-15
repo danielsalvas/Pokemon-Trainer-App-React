@@ -6,8 +6,11 @@ import { useState } from "react"
  const EquipoPokemon = ({guardarPokemons, setGuardarPokemons, setIsValidPokemons}) => {
 
   const handleEdit = () => {
-    setGuardarPokemons([])
+    guardarPokemons.forEach((pokemon) => {
+      pokemon[0].toggled = false
+    })
     setIsValidPokemons(false)
+    setGuardarPokemons([])
   }
 
    return (
