@@ -125,7 +125,7 @@ const ChoosePokemon = ({
               <input 
                 value={editantoPokemons ?'EDITAR EQUIPO POKEMON': 'ESCOGER EQUIPO POKEMON'}
                 type="submit" 
-                className='bg-indigo-800 w-1/2 p-3 text-white uppercase font-bold hover:bg-blue cursor-pointer transition-all rounded-3xl text-xs'
+                className='bg-green-800 w-1/2 p-5 text-white uppercase font-bold hover:bg-indigo-800 cursor-pointer transition-all rounded-3xl text-xs'
               />
             </div>
           </form>
